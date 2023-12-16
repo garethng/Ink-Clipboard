@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="ico.png">
+    
+    <title>在线剪贴板</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="panel">
+
+            <textarea id="input-text" rows="5" cols="50"></textarea>
+            <div class="buttons">
+                <button id="submit-btn">确认</button>
+                <button id="refresh-btn"><i class="fas fa-sync"></i></button>
+            </div>
+            
+            <div id="clipboard-list"></div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+    <style src="style.css" ></style>
+</body>
+</html>
