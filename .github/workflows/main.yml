@@ -17,5 +17,18 @@ jobs:
     - name: Install Vercel CLI
       run: npm i -g vercel
 
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build
+      run: npm run build
+
     - name: Deploy to Vercel
-      run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --confirm
+      uses: amondnet/vercel-action@v19
+      with:
+        vercel-token: ${{ secrets.VERCEL_TOKEN }} # 在 GitHub Secrets 中定义的 Vercel Token
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} # 在 GitHub Secrets 中定义的 Vercel Org ID
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # 在 GitHub Secrets 中定义的 Vercel Project ID
+        github-token: ${{ secrets.GIT_TOKEN }} # GitHub 自动生成的 Token
+        working-directory: .next
+
