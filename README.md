@@ -23,10 +23,10 @@ Due to the way the API Gateway works, you will need to set the `method` query pa
 The SET endpoint is used to set the data in the database. It takes three query parameters, `userid`, which is the ID of the data you want to set, `clipboard`, which is the data you want to set, and `method`, which is the method you want to use to set the data. It returns a JSON object with the data.
 
 ## TODO
+- [ ] Add support for multiple users
 - [ ] Add support for images
 - [ ] Add support for deleting data
-- [ ] user accounts
-- [ ] Add support for other databases
+- [ ] Use Other Open Source Frontend Frameworks
 - [ ] Beautify the website
 
 ## Version History
