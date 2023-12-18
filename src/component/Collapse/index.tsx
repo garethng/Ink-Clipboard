@@ -1,34 +1,30 @@
 'use client';
 
-import React, {  useState, useEffect,  createContext, useContext } from 'react';
-import type { CollapseProps } from 'antd';
+import React, { useEffect, useContext } from 'react';
 import { Collapse } from 'antd';
 import MyCard from '@/component/Card';
-import axios from 'axios';
 import MySkeleton from '@/component/Skeleton';
 import fetchUtils from '@/utils/fetch';
 import RefreshLoadingContext from '@/utils/refreshContext';
 
+
 const MyCollapse: React.FC = () => { 
-    const { isLoading, setLoading } = useContext(RefreshLoadingContext);
-
-    const [data, setData] = useState<{ key: string; label: string; children: React.ReactElement[] }[] | null>(null);
-
-    
+    const { isLoading, setLoading, data, setData } = useContext(RefreshLoadingContext);
 
     useEffect(() => {
+        console.log(data);
         if (isLoading || data === null) {
             fetchUtils.fetchClipboardItems().then(items => {
                 var groups = fetchUtils.groupByData(items.data);
                 var cps = []
                 var index = 1
-                console.log(groups);
+                
                 for (const group in groups) {
                     cps.push({
                         key: index.toString(),
                         label: group,
-                        children: groups[group].map((item) => {
-                            return <MyCard key={item} content={item} />
+                        children: groups[group].map((item, n_index) => {
+                            return {"key": n_index, "content":item} 
                         }),
                     });
                     index += 1;
@@ -40,7 +36,7 @@ const MyCollapse: React.FC = () => {
             });
         }
        
-    }, [data, isLoading, setLoading]);
+    }, [data, isLoading, setData, setLoading]);
     
 
     if (isLoading || data === null) {
@@ -49,7 +45,15 @@ const MyCollapse: React.FC = () => {
     
 
     return (
-        <Collapse items={data} defaultActiveKey="1" className="max-w-[400px]"/>
+        <Collapse defaultActiveKey="1" className="max-w-[400px]">
+            {data.map((item, index) => (
+                <Collapse.Panel header={item.label} key={item.key}>
+                    {item.children.map(child => (
+                        <MyCard key={child.key} content={child.content} />
+                    ))}
+                </Collapse.Panel>
+            ))}
+        </Collapse>
     );
 };
 

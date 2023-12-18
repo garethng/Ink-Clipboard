@@ -6,7 +6,7 @@ import RefreshLoadingContext from '@/utils/refreshContext';
   
 
 export default function RefreshButton() {
-    const { isLoading, setLoading } = useContext(RefreshLoadingContext);
+    const { isLoading, setLoading, data, setData } = useContext(RefreshLoadingContext);
     return (
         <Button
             onClick={() => setLoading(true)}
