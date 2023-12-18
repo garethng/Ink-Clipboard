@@ -3,12 +3,12 @@
 import React, {  useState, useEffect } from 'react';
 import type { CollapseProps } from 'antd';
 import { Collapse } from 'antd';
-import MyCard from './Card';
+import MyCard from '@/component/Card';
 import axios from 'axios';
 import MySkeleton from '@/component/Skeleton';
 import fetchUtils from '@/utils/fetch';
 
-const App: React.FC = () => { 
+const MyCollapse: React.FC = () => { 
     const [data, setData] = useState<{ key: string; label: string; children: React.ReactElement[] }[] | null>(null);
 
     useEffect(() => {
@@ -44,4 +44,4 @@ const App: React.FC = () => {
     );
 };
 
-export default App;
+export default MyCollapse;
