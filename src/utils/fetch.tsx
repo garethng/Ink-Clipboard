@@ -1,4 +1,5 @@
 import axios from 'axios';
+import getFormattedDate from '@/utils/dateFormat';
 
 axios.defaults.baseURL = 'https://c3951w0dl3.execute-api.us-east-1.amazonaws.com/demo';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -12,31 +13,33 @@ function fetchClipboardItems() {
 function groupByData(data: Record<string, string>) {
     var groups: Record<string, string[]> = {};
     var now = new Date();
-    Object.keys(data).forEach(function(item) {
+    Object.keys(data).forEach(function (item) {
+        
         var date = new Date(item);
+        var format_date = getFormattedDate(date);
+        
         var diff = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
         if (diff > 3) {
-            if (!groups['之前']) {
-                groups['之前'] = [];
+            if (!groups['Before']) {
+                groups['Before'] = [];
             }
-            groups['之前'].push(data[item]);
+            groups['Before'] = [...groups['Before'], ...data[item].split(',')];
         } else {
-            if (!groups[item]) {
-                groups[item] = [];
-            }
+            if (!groups[format_date]) {
+                groups[format_date] = [];
+            } 
             const clipboard = data[item].split(',');
-            groups[item] = clipboard;
+            groups[format_date] = clipboard;
         }
     });
 
 
     // Sort the keys
     const sortedKeys = Object.keys(groups).sort((a, b) => {
-        if (a === '之前') return 1;
-        if (b === '之前') return -1;
+        if (a === 'Before') return 1;
+        if (b === 'Before') return -1;
         return new Date(b).getTime() - new Date(a).getTime();
     });
-
     // Create a new object with sorted keys
     const sortedGroups: Record<string, string[]> = {};
     sortedKeys.forEach((key) => {
