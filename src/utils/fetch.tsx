@@ -32,8 +32,8 @@ function groupByData(data: Record<string, string>) {
 
     // Sort the keys
     const sortedKeys = Object.keys(groups).sort((a, b) => {
-        if (a === '之前') return -1;
-        if (b === '之前') return 1;
+        if (a === '之前') return 1;
+        if (b === '之前') return -1;
         return new Date(b).getTime() - new Date(a).getTime();
     });
 

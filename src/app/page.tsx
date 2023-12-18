@@ -2,7 +2,7 @@
 
 import React, {lazy, Suspense} from 'react';
 import RootLayout from './layout';
-import App from '@/component/mainframe';
+import MyCollapse from '@/component/Collapse'
 import type { NextPage } from 'next';
 
 import axios, { isCancel, AxiosError } from 'axios';
@@ -28,7 +28,7 @@ const Page: React.FC = () => {
     // const OtherComponent = React.lazy(() => import('./component/mainframe'));
   return (
     <RootLayout>
-      <App />
+      <MyCollapse />
       
     </RootLayout>
   );
