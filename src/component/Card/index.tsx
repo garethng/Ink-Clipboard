@@ -7,7 +7,7 @@ function clickCopy(content: string) {
 
 const MyCard: FC<{ content: string }> = ({ content }) => {
   return (
-    <Card className="max-w-[400px]">
+    <Card className="max-w-[400px] mb-4">
       <CardHeader className="flex gap-3">
       <p>{ content }</p>
       </CardHeader>
