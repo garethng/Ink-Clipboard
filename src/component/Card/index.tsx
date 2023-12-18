@@ -1,9 +1,6 @@
 import React, { FC } from "react";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button} from "@nextui-org/react";
 import MyPopover from "../Popover";
-function clickCopy(content: string) { 
-  
-}
 
 const MyCard: FC<{ content: string }> = ({ content }) => {
   return (
