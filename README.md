@@ -29,12 +29,8 @@ The SET endpoint is used to set the data in the database. It takes three query p
 - [ ] Use Other Open Source Frontend Frameworks
 - [ ] Beautify the website
 
-## Version History
-* 0.0.1
-    * Initial Release
-    * Support single user
-    * Support text only
-    * Support AWS DynamoDB
+## Release History
+This project's release history can be found in [Release](https://github.com/garethng/cloud_paste/releases) for more information
 
 
 ## License
