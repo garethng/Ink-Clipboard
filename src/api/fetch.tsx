@@ -46,7 +46,21 @@ function groupByData(data: Record<string, string>) {
         sortedGroups[key] = groups[key];
     });
 
-    return sortedGroups;
+    var cps = []
+    var index = 1
+    
+    for (const group in sortedGroups) {
+        cps.push({
+            key: index.toString(),
+            label: group,
+            children: sortedGroups[group].reverse().map((item, n_index) => {
+                return { "key": n_index, "content": item }
+            }),
+        });
+        index += 1;
+    }
+
+    return cps;
 }
 
 const fetchUtils = { fetchClipboardItems, groupByData };

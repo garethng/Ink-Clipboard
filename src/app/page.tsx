@@ -2,7 +2,7 @@
 
 import React, {lazy, Suspense} from 'react';
 import RootLayout from './layout';
-import MainPage from '@/component/MainPage';
+import MainPage from './MainPage/page';
 const Page: React.FC = () => {
 
   return (
