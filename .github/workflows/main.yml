@@ -26,9 +26,8 @@ jobs:
     - name: Deploy to Vercel
       uses: amondnet/vercel-action@v19
       with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }} # 在 GitHub Secrets 中定义的 Vercel Token
-        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} # 在 GitHub Secrets 中定义的 Vercel Org ID
-        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # 在 GitHub Secrets 中定义的 Vercel Project ID
-        github-token: ${{ secrets.GIT_TOKEN }} # GitHub 自动生成的 Token
-        working-directory: .next
+        vercel-token: ${{ secrets.VERCEL_TOKEN }} 
+        vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} 
+        vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+        github-token: ${{ secrets.GIT_TOKEN }}
 
