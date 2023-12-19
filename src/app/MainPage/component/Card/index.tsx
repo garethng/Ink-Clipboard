@@ -2,7 +2,9 @@ import React, { FC } from "react";
 import {Card, CardHeader, CardBody, CardFooter, Divider, Link, Image, Button} from "@nextui-org/react";
 import MyPopover from "../Popover";
 
-const MyCard: FC<{ content: string }> = ({ content }) => {
+
+
+const MyCard: FC<{ content: string, childIndex: number, dateTime: string, onDelete: (dataTime: string, index: number) => void }> = ({ content, childIndex, dateTime, onDelete }) => {
   return (
     <Card className="max-w-[400px] mb-4">
       <CardHeader className="flex gap-3">
@@ -16,7 +18,7 @@ const MyCard: FC<{ content: string }> = ({ content }) => {
 
          
        
-        <Button color="danger" variant="bordered" >
+          <Button color="danger" variant="bordered" onClick={() => onDelete(dateTime, childIndex)}>
           Delete
         </Button>
       </div>
