@@ -1,7 +1,7 @@
 'use client';
 import React, { useContext } from "react";
 import {Textarea, Button} from "@nextui-org/react";
-import addClipboardItem from "@/utils/addItem";
+import addClipboardItem from "@/api/addItem";
 import RefreshLoadingContext from "@/utils/refreshContext";
 import MyCard from "../Card";
 import getFormattedDate from "@/utils/dateFormat";
