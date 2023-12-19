@@ -18,19 +18,11 @@ function groupByData(data: Record<string, string>) {
         var date = new Date(item);
         var format_date = getFormattedDate(date);
         
-        var diff = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
-        if (diff > 3) {
-            if (!groups['Before']) {
-                groups['Before'] = [];
-            }
-            groups['Before'] = [...groups['Before'], ...data[item].split(',')];
-        } else {
-            if (!groups[format_date]) {
-                groups[format_date] = [];
-            } 
-            const clipboard = data[item].split(',');
-            groups[format_date] = clipboard;
-        }
+        if (!groups[format_date]) {
+            groups[format_date] = [];
+        } 
+        const clipboard = data[item].split(',');
+        groups[format_date] = clipboard;
     });
 
 
