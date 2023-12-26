@@ -20,6 +20,8 @@ The API is built using AWS API Gateway and AWS Lambda.
 ## How to use
 You can use vercel to deploy this application to your own domain. You will need to create a DynamoDB table and an API Gateway API with a Lambda function to handle the requests.
 
+Try this [Demo](https://cloud-paste-two.vercel.app) for preview.
+
 ## API
 The API is very simple. It has two endpoints, one for getting the data and one for setting the data.
 
