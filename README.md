@@ -1,4 +1,16 @@
+<div align="center">
+   <img width="160" src="https://picdm.sunbangyan.cn/2023/12/26/9e0e4b1836d30291d87f2eaba0262bb7.jpeg" alt="logo">
+
 # Cloud Paste
+
+![Made with React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
+![Next.js](https://img.shields.io/badge/Next.js-000000.svg?style=flat&logo=Next.js)
+![UI Framework: Next UI](https://img.shields.io/badge/Next%20UI-blue?style=flat)
+![Deployed on Vercel](https://img.shields.io/badge/Vercel-000000?style=flat&logo=vercel&logoColor=white)
+![npm](https://img.shields.io/badge/-Npm-CB3837.svg?logo=npm&style=flat)
+[![License: GPL v3](https://img.shields.io/github/license/garethng/cloud_paste.svg?style=flat)](LICENSE)
+[![release](https://img.shields.io/github/v/release/garethng/cloud_paste?style=flat)]((https://github.com/garethng/cloud_paste/releases))
+
 
 Cloud Paste is a simple web application that allows you to copy and paste text between devices. It is built using Native HTML and JavaScript, and uses AWS DynamoDB to store the data.
 
