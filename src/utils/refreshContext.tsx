@@ -4,7 +4,7 @@ import React from 'react';
 interface DataType {
     key: string;
     label: string;
-    children: {"key": number, "content": string}[];
+    children: {"key": string, "content": string}[];
   }
 
 const RefreshLoadingContext = createContext({
