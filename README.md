@@ -40,9 +40,10 @@ The SET endpoint is used to set the data in the database. It takes three query p
 ## TODO
 - [ ] Add support for multiple users
 - [ ] Add support for images
-- [ ] Add support for deleting data
-- [ ] Use Other Open Source Frontend Frameworks
-- [ ] Beautify the website
+- [ ] Add support for long paste strings
+- [x] Add support for deleting data
+- [x] Use Other Open Source Frontend Frameworks
+- [x] Beautify the website
 
 ## Release History
 This project's release history can be found in [Release](https://github.com/garethng/cloud_paste/releases) for more information
