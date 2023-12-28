@@ -33,9 +33,14 @@ The GET endpoint is used to get the data from the database. It takes two query p
 Due to the way the API Gateway works, you will need to set the `method` query parameter to `query` to use this endpoint.
 
 ### SET
-`/add_to_clipboard?userid=123&clipboard=Hello%20World&method=update`
+`/add_to_clipboard?userid=123&clipboard=Hello%20World&method=update&index_time=2023-11-11`
 
-The SET endpoint is used to set the data in the database. It takes three query parameters, `userid`, which is the ID of the data you want to set, `clipboard`, which is the data you want to set, and `method`, which is the method you want to use to set the data. It returns a JSON object with the data.
+The SET endpoint is used to set the data in the database. It takes three query parameters, `userid`, which is the ID of the data you want to set, `clipboard`, which is the data you want to set, and `method`, which is the method you want to use to set the data. It returns a JSON object with the noteid.
+
+### DELETE
+`/delete_clipboard?userid=123&method=delete&note_id=123`
+
+The DELETE endpoint is used to delete the data in the database. It takes three query parameters, `userid`, which is the ID of the data you want to delete, `method`, which is the method you want to use to delete the data, and `nodt_id`, which is the note id of the data you want to delete. It returns a JSON object with the data.
 
 ## TODO
 - [ ] Add support for multiple users
