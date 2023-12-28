@@ -9,30 +9,26 @@ import fetchUtils from '@/api/fetch';
 import RefreshLoadingContext from '@/utils/refreshContext';
 import deleteFromClipboard from '@/api/deleteItem';
 
-preload('clip', fetchUtils.fetchClipboardItems);
+preload('clip', fetchUtils.fetchClipboardData);
 
 const MyCollapse: React.FC = () => { 
     const { isLoading, setLoading, data, setData } = useContext(RefreshLoadingContext);
-    const {data: swrdata, error} = useSWR('clip', fetchUtils.fetchClipboardItems); // the first argument is the key for the cache cannot be null
+    const {data: swrdata, error} = useSWR('clip', fetchUtils.fetchClipboardData); // the first argument is the key for the cache cannot be null
     const [useSWRData, setUseSWRData] = useState(false);
     if (error) { 
-        console.log(error);
+        console.error(error);
     }
 
     const clickDelete = (dateTime: string, childIndex: number) => { 
         if (!data) { 
             return
         }
-        console.log(dateTime, childIndex)
+        console.log(data);
         var index = data.findIndex((item) => item.label == dateTime);
-        var length = data[index].children.length;
-        var new_child_index = length - childIndex - 1;
-
-        deleteFromClipboard(dateTime, new_child_index).then((res) => { 
+        var new_child_index = data[index].children[childIndex].key;
+        deleteFromClipboard(new_child_index).then((res) => { 
             var new_data = [...data];
-            
 
-            console.log(index)
             new_data[index].children.splice(childIndex, 1);
             if (new_data[index].children.length == 0) { 
                 new_data.splice(index, 1);
@@ -42,8 +38,6 @@ const MyCollapse: React.FC = () => {
         
 
     }
-    
-    console.log(useSWRData)
 
     
 
@@ -57,9 +51,8 @@ const MyCollapse: React.FC = () => {
             setUseSWRData(true)
         } else if (isLoading) { 
             
-            fetchUtils.fetchClipboardItems().then((res) => { 
+            fetchUtils.fetchClipboardData().then((res) => { 
                 groups = fetchUtils.groupByData(res.data);
-                console.log(groups)
                 setData(groups);
                 setLoading(false);
             })
