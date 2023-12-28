@@ -64,7 +64,7 @@ const MyCollapse: React.FC = () => {
     return (
         <Collapse 
         defaultActiveKey="1" 
-            className="max-w-[400px]"
+            className="w-full flex flex-col gap-1 max-w-[400px] mb-4"
         
         items={(data || []).map(item => ({
             key: item.key,
