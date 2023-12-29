@@ -45,7 +45,7 @@ The DELETE endpoint is used to delete the data in the database. It takes three q
 ## TODO
 - [ ] Add support for multiple users
 - [ ] Add support for images
-- [ ] Add support for long paste strings
+- [x] Add support for long paste strings
 - [x] Add support for deleting data
 - [x] Use Other Open Source Frontend Frameworks
 - [x] Beautify the website
