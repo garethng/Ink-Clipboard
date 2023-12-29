@@ -1,9 +1,11 @@
 import api from '@/api/baseAPI';
 
 function fetchClipboardData() {
+
     return api.post('get_clipboard',{
         "userid": "123"
     });
+
 }
 
 function groupByData(data: Record<string, any[]>) {
