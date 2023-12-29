@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
-console.warn('baseURL', baseURL);
-axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.defaults.headers.post['Accept'] = 'application/json';
-axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
+const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
 
 const api = axios.create({
-    baseURL,
+    baseURL: baseURL,
+    headers: {
+        'Content-Type': 'application/json', // 添加您需要的头部信息
+        'Accept': 'application/json'
+    }
 });
 
 export default api;
