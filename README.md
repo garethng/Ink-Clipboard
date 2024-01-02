@@ -1,5 +1,5 @@
 <div align="center">
-   <img width="160" src="https://picdm.sunbangyan.cn/2023/12/26/9e0e4b1836d30291d87f2eaba0262bb7.jpeg" alt="logo">
+   <img width="160" src="https://i.imgs.ovh/2024/01/02/0DQ5R.md.png" alt="logo">
 </div>
 
 # Cloud Paste
