@@ -3,12 +3,12 @@
 'use client';
 import React, {useState, Suspense} from 'react';
 
-import MySkeleton from './component/Skeleton';
+import MySkeleton from '../../component/Skeleton';
 
-import MyCollapse from '@/app/MainPage/component/Collapse'
-import MyTextarea from '@/app/MainPage/component/Textarea'
-import RefreshButton from '@/app/MainPage/component/RefreshButton';
-import RefreshLoadingContext from '@/utils/refreshContext';
+import MyCollapse from '@/component/Collapse'
+import MyTextarea from '@/component/Textarea'
+import RefreshButton from '@/component/RefreshButton';
+import RefreshLoadingContext from '@/lib/refreshloadingcontext'
 
 
 const MainPage: React.FC = () => {
