@@ -4,10 +4,10 @@ import React, { useEffect, useContext, useState, use } from 'react';
 import useSWR, {preload} from 'swr'
 import { Collapse } from 'antd';
 import MySkeleton from '../Skeleton';
-import MyCard from '@/app/MainPage/component/Card';
-import fetchUtils from '@/api/fetch';
-import RefreshLoadingContext from '@/utils/refreshContext';
-import deleteFromClipboard from '@/api/deleteItem';
+import MyCard from '@/component/Card';
+import fetchUtils from '@/sevices/fetch';
+import RefreshLoadingContext from '@/lib/refreshloadingcontext';
+import deleteFromClipboard from '@/sevices/deleteItem';
 
 preload('clip', fetchUtils.fetchClipboardData);
 

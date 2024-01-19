@@ -1,5 +1,6 @@
-import api from '@/api/baseAPI'
-import getFormattedDate from '@/utils/dateFormat'
+import api from '@/sevices/baseAPI'
+import getFormattedDate from '@/lib/dateFormat'
+
 function addClipboardItem(content: string) 
 {
     var dateTime = getFormattedDate(new Date());

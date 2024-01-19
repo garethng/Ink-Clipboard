@@ -10,14 +10,18 @@
   },
   "dependencies": {
     "@ant-design/cssinjs": "^1.18.1",
+    "@clerk/nextjs": "^4.29.4",
     "@nextui-org/react": "^2.2.9",
     "antd": "^5.12.2",
+    "aws-sdk": "^2.1538.0",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.16",
     "next": "14.0.4",
+    "next-auth": "^4.24.5",
     "react": "^18",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18",
+    "react-icons": "^5.0.1",
     "swr": "^2.2.4",
     "tailwind": "^4.0.0"
   },

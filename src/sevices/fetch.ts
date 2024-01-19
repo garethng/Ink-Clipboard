@@ -1,4 +1,4 @@
-import api from '@/api/baseAPI';
+import api from '@/sevices/baseAPI';
 
 function fetchClipboardData() {
 
