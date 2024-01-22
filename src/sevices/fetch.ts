@@ -1,9 +1,9 @@
 import api from '@/sevices/baseAPI';
 
-function fetchClipboardData() {
+function fetchClipboardData(userid: string) {
 
     return api.post('get_clipboard',{
-        "userid": "123"
+        "userid": userid
     });
 
 }
