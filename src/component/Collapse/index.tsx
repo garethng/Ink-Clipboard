@@ -9,11 +9,14 @@ import fetchUtils from '@/sevices/fetch';
 import RefreshLoadingContext from '@/lib/refreshloadingcontext';
 import deleteFromClipboard from '@/sevices/deleteItem';
 
-preload('clip', fetchUtils.fetchClipboardData);
+const fetcher = (url: string) => fetch(url, {method: "POST"}).then((res) => res.json());
+preload('/api/get-clipboard', fetcher);
+
+const deleter = (url: string, noteid: string) => fetch(url, {method: "POST", body: JSON.stringify({noteid})}).then((res) => res.json());
 
 const MyCollapse: React.FC = () => { 
     const { isLoading, setLoading, data, setData } = useContext(RefreshLoadingContext);
-    const {data: swrdata, error} = useSWR('clip', fetchUtils.fetchClipboardData); // the first argument is the key for the cache cannot be null
+    const {data: swrdata, error} = useSWR('/api/get-clipboard', fetcher); // the first argument is the key for the cache cannot be null
     const [useSWRData, setUseSWRData] = useState(false);
     if (error) { 
         console.error(error);
@@ -26,7 +29,8 @@ const MyCollapse: React.FC = () => {
         console.log(data);
         var index = data.findIndex((item) => item.label == dateTime);
         var new_child_index = data[index].children[childIndex].key;
-        deleteFromClipboard(new_child_index).then((res) => { 
+        
+        deleter("/api/delete-item", new_child_index).then((res) => { 
             var new_data = [...data];
 
             new_data[index].children.splice(childIndex, 1);
@@ -35,7 +39,7 @@ const MyCollapse: React.FC = () => {
             }
             setData(new_data)
         })
-        
+
 
     }
 
@@ -45,14 +49,16 @@ const MyCollapse: React.FC = () => {
         var groups = null;
         
         if (!useSWRData && data == null && swrdata) {
-            groups = fetchUtils.groupByData(swrdata.data);
+            console.log(swrdata)
+            groups = swrdata;
+            
             setData(groups);
             setLoading(false);
             setUseSWRData(true)
         } else if (isLoading) { 
             
-            fetchUtils.fetchClipboardData().then((res) => { 
-                groups = fetchUtils.groupByData(res.data);
+            fetcher("/api/get-clipboard").then((res) => { 
+                groups = swrdata
                 setData(groups);
                 setLoading(false);
             })
@@ -66,15 +72,14 @@ const MyCollapse: React.FC = () => {
         defaultActiveKey="1" 
             className="w-full flex flex-col gap-1 max-w-[400px] mb-4"
         
-        items={(data || []).map(item => ({
-            key: item.key,
-            header: item.label,
-            label: item.label,// This sets the label for the panel
-            
-            children: item.children.map((child, childIndex) => (
-                <MyCard key={child.key} content={child.content} childIndex={childIndex} dateTime={ item.label } onDelete={(dateTime: string, index: number) => clickDelete(dateTime, index)} />
-            ))
-          }))}
+            items={Array.isArray(data) ? data.map(item => ({
+                key: item.key,
+                header: item.label,
+                label: item.label,// This sets the label for the panel,
+                children: item.children.map((child, childIndex) => (
+                    <MyCard key={child.key} content={child.content} childIndex={childIndex} dateTime={ item.label } onDelete={(dateTime: string, index: number) => clickDelete(dateTime, index)} />
+                ))
+            })) : []}
       />
     );
 };
