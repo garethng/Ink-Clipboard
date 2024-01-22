@@ -1,4 +1,4 @@
-import {ClipboardDataType} from '../types/ClipboardDataType';
+import {ClipboardDataType} from '../types/clipboarddatatype';
 import { createContext } from 'react';
 
 const RefreshLoadingContext = createContext({
