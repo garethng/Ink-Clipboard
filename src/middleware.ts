@@ -10,6 +10,9 @@ export default authMiddleware({
     console.log(auth);
 
     if (!auth.userId && req.nextUrl.pathname !== '/sign-in') {
+      if (req.nextUrl.pathname.startsWith('/sign-up')) {
+        return NextResponse.next();
+      }
       return NextResponse.redirect(new URL("/sign-in", req.url));
     }
 
