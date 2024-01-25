@@ -1,5 +1,5 @@
 import { currentUser } from "@clerk/nextjs";
-import deleteFromClipboard from "@/sevices/deleteItem";
+import {deleteFromClipboard} from "@/sevices/deleteItem";
 
 export async function POST(req: Request, response: Response) {
     const user = await currentUser();
