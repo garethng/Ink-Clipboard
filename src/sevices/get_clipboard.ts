@@ -1,8 +1,5 @@
 import {auth} from "@clerk/nextjs";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
-import {Note} from "@/types/note";
-
-import { ClipboardDataType } from "@/types/clipboarddatatype";
 
 const supabaseClient = async (supabaseAccessToken: string): Promise<SupabaseClient> => {
     const supabase = createClient(
