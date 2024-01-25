@@ -49,6 +49,7 @@ const MyCollapse: React.FC = () => {
         var groups = null;
         
         if (!useSWRData && data == null && swrdata) {
+            console.log("1")
             console.log(swrdata)
             groups = swrdata;
             
