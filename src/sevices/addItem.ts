@@ -1,5 +1,6 @@
 import {auth} from "@clerk/nextjs";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
+import { v4 as uuidv4 } from 'uuid';
 
 const supabaseClient = async (supabaseAccessToken: string): Promise<SupabaseClient> => {
     const supabase = createClient(
@@ -21,16 +22,20 @@ export async function add_item(content: string, userid: string) {
 
     if (supabaseAccessToken) {
         const supabase = await supabaseClient(supabaseAccessToken);
+        const noteid = uuidv4();
         const { data, error } = await supabase
             .from('clipboard')
             .insert([
-                { content: content, user_id: userid },
+                { content: content, user_id: userid, noteid: noteid },
             ]);
         
         if (error) {
             console.log(error);
         }
         console.log(data);
+        return noteid;
     }
 }
+
+
 
