@@ -22,7 +22,7 @@ export async function POST(req: Request, response: Response) {
         }
         // // Parse the body as JSON
         const res = await add_item(content, user.id);
-        return Response.json({ nodeid: "2222" }, {
+        return Response.json({ nodeid: res }, {
             status: 200,
         })
     } catch (e) { 

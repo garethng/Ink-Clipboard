@@ -1,15 +1,16 @@
-import axios from 'axios';
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
+const supabaseClient = async (supabaseAccessToken: string): Promise<SupabaseClient> => {
+    const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL || 'DEFAULT_SUPABASE_URL',
+        process.env.NEXT_PUBLIC_SUPABASE_KEY || 'DEFAULT_SUPABASE_KEY',
+        {
+            global: { headers: { Authorization: `Bearer ${supabaseAccessToken}` } },
+        }
+    );
+    // set Supabase JWT on the client object,
+    // so it is sent up with all Supabase requests
+    return supabase;
+};
 
-const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL
-
-const api = axios.create({
-    baseURL: baseURL,
-    headers: {
-        'Content-Type': 'application/json', // 添加您需要的头部信息
-        'Accept': 'application/json'
-    }
-
-});
-
-export default api;
+// export supabaseClient;
