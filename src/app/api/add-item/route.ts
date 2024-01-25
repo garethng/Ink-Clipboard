@@ -1,5 +1,5 @@
 import { currentUser } from "@clerk/nextjs";
-import addClipboardItem from "@/sevices/addItem";
+import {add_item} from "@/sevices/addItem";
 
 export async function POST(req: Request, response: Response) { 
     const user = await currentUser();
@@ -21,8 +21,8 @@ export async function POST(req: Request, response: Response) {
             return Response.json({ code: -1, message: "no content" }, { status: 400 });
         }
         // // Parse the body as JSON
-        const res = await addClipboardItem(user.id, content);
-        return Response.json({ nodeid: res.data }, {
+        const res = await add_item(content, user.id);
+        return Response.json({ nodeid: "2222" }, {
             status: 200,
         })
     } catch (e) { 
