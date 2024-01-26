@@ -26,22 +26,22 @@ export default function MyTextarea() {
       if (res.status == 200) {
         var now = getFormattedDate(new Date());
         res.json().then((res) => { 
-          var noteid = res.noteid;
+          var noteid = res;
           if (data) {
             var new_data = [...data];
             if (new_data[0].label == now) {
-              new_data[0].children.unshift( {"key":noteid, "content": value})
+              new_data[0].children.unshift( {"key":noteid, "content": value, "actual_time": new Date()})
               setData(new_data)
             } else {
   
-              var new_item = { key: "1", label: now, children: [{ key: noteid, content: value }] }
+              var new_item = { key: "1", label: now, children: [{ key: noteid, content: value, "actual_time": new Date() }] }
               new_data.unshift(new_item)
               setData(new_data)
             }
             
           } else {
             console.log(value)
-            setData([{ key: "1", label: now, children: [{ key: noteid, content: value }] }])
+            setData([{ key: "1", label: now, children: [{ key: noteid, content: value, "actual_time": new Date() }] }])
             
           }
         });
