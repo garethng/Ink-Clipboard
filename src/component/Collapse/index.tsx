@@ -5,9 +5,8 @@ import useSWR, {preload} from 'swr'
 import { Collapse } from 'antd';
 import MySkeleton from '../Skeleton';
 import MyCard from '@/component/Card';
-import fetchUtils from '@/sevices/fetch';
 import RefreshLoadingContext from '@/lib/refreshloadingcontext';
-import deleteFromClipboard from '@/sevices/deleteItem';
+
 
 const fetcher = (url: string) => fetch(url, {method: "POST"}).then((res) => res.json());
 preload('/api/get-clipboard', fetcher);
