@@ -1,5 +1,5 @@
 <div align="center">
-   <img width="160" src="https://s2.loli.net/2024/01/26/rOVatkuNSCLToyx.png" alt="logo">
+   <img width="160" src="https://s2.loli.net/2024/01/26/R1PsCVoMhykEali.png" alt="logo">
 </div>
 
 # InkCloud Clipboard
