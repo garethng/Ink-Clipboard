@@ -7,15 +7,17 @@ import MySkeleton from '../Skeleton';
 import MyCard from '@/component/Card';
 import RefreshLoadingContext from '@/lib/refreshloadingcontext';
 
+const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const fetcher = (url: string) => fetch(url, {method: "POST"}).then((res) => res.json());
-preload('/api/get-clipboard', fetcher);
+// use NEXT_PUBLIC_API_BASE_URL
+preload(`${NEXT_PUBLIC_API_BASE_URL}/api/get-clipboard`, fetcher);
 
 const deleter = (url: string, noteid: string) => fetch(url, {method: "POST", body: JSON.stringify({noteid})}).then((res) => res.json());
 
 const MyCollapse: React.FC = () => { 
     const { isLoading, setLoading, data, setData } = useContext(RefreshLoadingContext);
-    const {data: swrdata, error} = useSWR('/api/get-clipboard', fetcher); // the first argument is the key for the cache cannot be null
+    const {data: swrdata, error} = useSWR(`${NEXT_PUBLIC_API_BASE_URL}/api/get-clipboard`, fetcher); // the first argument is the key for the cache cannot be null
     const [useSWRData, setUseSWRData] = useState(false);
     if (error) { 
         console.error(error);
