@@ -6,8 +6,6 @@ export default authMiddleware({
   publicRoutes: ["/sign-in"],
 
   afterAuth(auth, req, evt) {
-    console.log(req.nextUrl.pathname) 
-    console.log(auth);
 
     if (!auth.userId && req.nextUrl.pathname !== '/sign-in') {
       if (req.nextUrl.pathname.startsWith('/sign-up')) {
