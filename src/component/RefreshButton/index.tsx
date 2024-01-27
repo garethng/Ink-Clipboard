@@ -11,8 +11,7 @@ export default function RefreshButton() {
         <Button
             onClick={() => setLoading(true)}
             isLoading={isLoading}
-            color="secondary"
-            className="w-full flex max-w-[400px] mb-4"
+            className="w-full flex max-w-[400px] mb-4 bg-slate-950 text-white"
         spinner={
         <svg
             className="animate-spin h-5 w-5 text-current"
