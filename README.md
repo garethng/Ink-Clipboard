@@ -1,8 +1,8 @@
 <div align="center">
-   <img width="160" src="https://picdm.sunbangyan.cn/2023/12/26/9e0e4b1836d30291d87f2eaba0262bb7.jpeg" alt="logo">
+   <img width="160" src="https://s2.loli.net/2024/01/26/R1PsCVoMhykEali.png" alt="logo">
 </div>
 
-# Cloud Paste
+# InkCloud Clipboard
 
 ![Made with React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
 ![Next.js](https://img.shields.io/badge/Next.js-000000.svg?style=flat&logo=Next.js)
