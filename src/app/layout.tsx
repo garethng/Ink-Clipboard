@@ -8,7 +8,7 @@ import Metrics from './metrics'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Cloud Clipboard',
+  title: 'Ink Cloud Clipboard',
   description: 'Your own cross-platform clipboard',
 }
 

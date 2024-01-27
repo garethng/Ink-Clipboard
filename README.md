@@ -2,7 +2,7 @@
    <img width="160" src="https://s2.loli.net/2024/01/26/R1PsCVoMhykEali.png" alt="logo">
 </div>
 
-# InkCloud Clipboard
+# Ink Cloud Clipboard
 
 ![Made with React](https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB)
 ![Next.js](https://img.shields.io/badge/Next.js-000000.svg?style=flat&logo=Next.js)
@@ -13,7 +13,7 @@
 [![release](https://img.shields.io/github/v/release/garethng/cloud_paste?style=flat)]((https://github.com/garethng/cloud_paste/releases))
 
 
-Cloud Paste is a simple web application that allows you to copy and paste text between devices. It is built using Native HTML and JavaScript, and uses AWS DynamoDB to store the data.
+Ink Cloud Clipboard is a simple web application that allows you to copy and paste text between devices. It is built using Native HTML and JavaScript, and uses AWS DynamoDB to store the data.
 
 The API is built using AWS API Gateway and AWS Lambda.
 
