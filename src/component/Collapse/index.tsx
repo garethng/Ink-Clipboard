@@ -11,13 +11,16 @@ const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const fetcher = (url: string) => fetch(url, {method: "POST"}).then((res) => res.json());
 // use NEXT_PUBLIC_API_BASE_URL
-preload(`${NEXT_PUBLIC_API_BASE_URL}/api/get-clipboard`, fetcher);
+// const url = `${NEXT_PUBLIC_API_BASE_URL}/api/get-clipboard`;
+// console.log(url, 1);
+// preload(url, fetcher);
 
 const deleter = (url: string, noteid: string) => fetch(url, {method: "POST", body: JSON.stringify({noteid})}).then((res) => res.json());
 
 const MyCollapse: React.FC = () => { 
     const { isLoading, setLoading, data, setData } = useContext(RefreshLoadingContext);
-    const {data: swrdata, error} = useSWR(`${NEXT_PUBLIC_API_BASE_URL}/api/get-clipboard`, fetcher); // the first argument is the key for the cache cannot be null
+    const url = `${NEXT_PUBLIC_API_BASE_URL}/api/get-clipboard`;
+    const {data: swrdata, error} = useSWR(url, fetcher); // the first argument is the key for the cache cannot be null
     const [useSWRData, setUseSWRData] = useState(false);
     if (error) { 
         console.error(error);
@@ -27,7 +30,7 @@ const MyCollapse: React.FC = () => {
         if (!data) { 
             return
         }
-        console.log(data);
+
         var index = data.findIndex((item) => item.label == dateTime);
         var new_child_index = data[index].children[childIndex].key;
         
@@ -50,16 +53,15 @@ const MyCollapse: React.FC = () => {
         var groups = null;
         
         if (!useSWRData && data == null && swrdata) {
-            console.log("1")
-            console.log(swrdata)
+
             groups = swrdata;
             
             setData(groups);
             setLoading(false);
             setUseSWRData(true)
         } else if (isLoading) { 
-            
-            fetcher("/api/get-clipboard").then((res) => { 
+            const url = `${NEXT_PUBLIC_API_BASE_URL}/api/get-clipboard`; 
+            fetcher(url).then((res) => { 
                 groups = swrdata
                 setData(groups);
                 setLoading(false);
