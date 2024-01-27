@@ -13,7 +13,7 @@ const Social = () => {
                 target="_blank"
                 className="mx-3 flex max-w-[24px] flex-col items-center justify-center"
             >
-                <BsGithub className="text-lg" />
+                <BsGithub className="text-lg w-[30px] h-[30px]" />
             </a>
             {/* <a
                 href="https://www.producthunt.com/posts/ai-wallpaper?utm_source=aiwallpaper.shop"
