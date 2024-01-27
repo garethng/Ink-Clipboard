@@ -46,7 +46,7 @@ function groupByDate(data: any[]) {
             return b.actual_time.getTime() - a.actual_time.getTime();
         })
     });
-    console.log(groupedData);
+
     return Object.values(groupedData);
 }
 
@@ -80,7 +80,7 @@ export async function fetch_all() {
         //conver the data dict to object
         
 
-        console.log(data);
+
         const new_data = groupByDate(data);
         return new_data;
         // TODO #4: return the response in the format below

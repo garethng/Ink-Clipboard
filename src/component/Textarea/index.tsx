@@ -22,7 +22,6 @@ export default function MyTextarea() {
   const clickSubmit = (content: string) => { 
     
     fetcher("/api/add-item", content).then((res) => {  
-      console.log(res);
       if (res.status == 200) {
         var now = getFormattedDate(new Date());
         res.json().then((res) => { 
