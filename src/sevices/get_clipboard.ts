@@ -47,7 +47,21 @@ function groupByDate(data: any[]) {
         })
     });
 
-    return Object.values(groupedData);
+    const new_data = Object.values(groupedData).sort((a: any, b: any) => { 
+        if (a.key === "Before") {
+            return 1;
+        }
+        if (b.key === "Before") {
+            return -1;
+        }
+        return new Date(b.key).getTime() - new Date(a.key).getTime();
+    });
+    
+    if (new_data.length > 0) {
+        new_data[0].key = 1;
+    }
+
+    return new_data;
 }
 
 export async function fetch_all() {
