@@ -23,10 +23,12 @@ export async function add_item(content: string, userid: string) {
     if (supabaseAccessToken) {
         const supabase = await supabaseClient(supabaseAccessToken);
         const noteid = uuidv4();
+        // get datetime for current timezone format as YYYY-MM-DD
+        const created_at = new Date().toISOString().split('T')[0];
         const { data, error } = await supabase
             .from('clipboard')
             .insert([
-                { content: content, user_id: userid, noteid: noteid },
+                { content: content, user_id: userid, noteid: noteid, created_at: created_at },
             ]);
         
         if (error) {
