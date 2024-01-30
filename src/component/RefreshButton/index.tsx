@@ -2,14 +2,19 @@
 import React, {  useState, useEffect,  createContext, useContext } from 'react';
 import { Button } from "@nextui-org/react";
 import RefreshLoadingContext from '@/lib/refreshloadingcontext';;
-
+import { useRouter } from 'next/navigation';
   
 
 export default function RefreshButton() {
     const { isLoading, setLoading, data, setData } = useContext(RefreshLoadingContext);
+    const router = useRouter();
+
     return (
         <Button
-            onClick={() => setLoading(true)}
+            onClick={() => { 
+                setLoading(true);
+                router.refresh();
+            }}
             isLoading={isLoading}
             className="w-full flex max-w-[400px] mb-4 bg-slate-950 text-white"
         spinner={
