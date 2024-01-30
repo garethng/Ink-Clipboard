@@ -16,6 +16,18 @@ const supabaseClient = async (supabaseAccessToken: string): Promise<SupabaseClie
 };
 
 
+const getCurrentDate = (): string => {
+    const date = new Date()
+  
+    const year = date.getFullYear()
+  
+    const month = (date.getMonth() + 1).toString().padStart(2, '0')
+  
+    const day = date.getDate().toString().padStart(2, '0')
+  
+    return `${year}-${month}-${day}`
+  }
+
 export async function add_item(content: string, userid: string) {
     const signInTokens = auth();
     const supabaseAccessToken = await signInTokens.getToken({ template: 'supabase' });
@@ -23,8 +35,10 @@ export async function add_item(content: string, userid: string) {
     if (supabaseAccessToken) {
         const supabase = await supabaseClient(supabaseAccessToken);
         const noteid = uuidv4();
-        // get datetime for current timezone format as YYYY-MM-DD
-        const created_at = new Date().toISOString().split('T')[0];
+        // get datetime for current timezone format as YYYY-MM-DD set timezone to local timezone
+        
+        const created_at = getCurrentDate()
+
         const { data, error } = await supabase
             .from('clipboard')
             .insert([
