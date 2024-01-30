@@ -17,11 +17,12 @@ export async function POST(req: Request, response: Response) {
             return Response.json({ code: -1, message: "no body" }, { status: 400 });
         }
         var content = json.content;
+        var created_at = json.created_at;
         if (!content) { 
             return Response.json({ code: -1, message: "no content" }, { status: 400 });
         }
         // // Parse the body as JSON
-        const res = await add_item(content, user.id);
+        const res = await add_item(content, user.id, created_at);
         return Response.json({ nodeid: res }, {
             status: 200,
         })

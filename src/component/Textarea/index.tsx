@@ -7,21 +7,40 @@ import MyCard from "../Card";
 import getFormattedDate from "@/lib/dateFormat";
 
 
-const fetcher = (url: string, content: string) => fetch(url, {
+const fetcher = (url: string, content: string, created_at: string) => fetch(url, {
   method: "POST",
   headers: { "content-type": "application/json" },
   body: JSON.stringify({
-    content
+    content,
+    created_at
   })
 }).then((res) => res);
+
+function getCurrentDate() {
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
+  // 获取当前时间
+  const now = new Date();
+  // 将now转换为当前时区的时间
+  // get locale
+  // const locale = navigator.language
+  
+  const year = now.getFullYear().toString()
+  const month = (now.getMonth() + 1).toString().padStart(2, '0')
+  const day = now.getDate().toString().padStart(2, '0')
+  // 根据用户的时区将日期对象转换为字符串
+  const now_date_str = `${year}-${month}-${day}`
+  return now_date_str
+}
 
 export default function MyTextarea() {
   const [value, setValue] = React.useState("");
   const { isLoading, setLoading, data, setData } = useContext(RefreshLoadingContext);
-  
+  // 获取用户的实际时区
+ 
   const clickSubmit = (content: string) => { 
-    
-    fetcher("/api/add-item", content).then((res) => {  
+    const current_date = getCurrentDate()
+    fetcher("/api/add-item", content, current_date).then((res) => {  
       if (res.status == 200) {
         var now = getFormattedDate(new Date());
         res.json().then((res) => { 
@@ -44,7 +63,6 @@ export default function MyTextarea() {
             
           }
         });
-        console.log(data);
         
         setValue("");
       }
