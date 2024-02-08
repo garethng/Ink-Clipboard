@@ -11,7 +11,7 @@ import RefreshButton from '@/component/RefreshButton';
 import RefreshLoadingContext from '@/lib/refreshloadingcontext'
 
 
-const MainPage: React.FC = () => {
+const DetailPage: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [data, setData] = useState < { key: string; label: string; children: {key:string, content: string, actual_time: Date }[] }[] | null>(null)
     return (
@@ -30,4 +30,4 @@ const MainPage: React.FC = () => {
     )
  }
 
-export default MainPage;
+export default DetailPage;
